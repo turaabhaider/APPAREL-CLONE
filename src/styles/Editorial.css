@@ -1,0 +1,273 @@
+/* =======================================================================
+   Editorial.css
+   Styles for the two editorial sections: 01 · STANDARD (scroll-darkening
+   headline) and 02 · MATERIAL (photo + spec copy + stat row).
+
+   NOTE: `.reveal-up` is referenced in Editorial.jsx but intentionally not
+   redefined here — it's assumed to be driven by the site-wide scroll-
+   reveal system already in place elsewhere. Defining it again here risks
+   fighting that implementation.
+
+   Font: Inter Tight (tight grotesque, close to the reference). If your
+   project already loads a brand typeface site-wide, delete the @import
+   below and just repoint --ped-font at it. For production, move the
+   @import into an index.html <link> instead of @import for performance.
+   ======================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap');
+
+:root {
+  --ped-bg: #f3f0e6;
+  --ped-ink: #15140f;
+  --ped-muted: #b3ad9d;       /* unread headline words */
+  --ped-muted-2: #8d8876;     /* tiny labels, soft heading line */
+  --ped-copy: #6d695c;        /* body paragraph */
+  --ped-accent: #c8501c;      /* terracotta */
+  --ped-hairline: #ddd7c7;    /* rules / dividers */
+
+  --ped-font: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Helvetica, Arial, sans-serif;
+}
+
+.editorial,
+.material {
+  background-color: var(--ped-bg);
+  font-family: var(--ped-font);
+}
+
+.editorial *,
+.material * {
+  box-sizing: border-box;
+}
+
+/* Shared container: two classes = higher specificity than a lone
+   `.container` defined elsewhere in the app, so this won't get clobbered
+   and won't clobber other sections that just use `.container`. */
+.editorial.container,
+.material.container {
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: clamp(24px, 5vw, 80px);
+}
+
+/* ===================================================
+   01 — STANDARD
+   =================================================== */
+
+.editorial.container {
+  display: grid;
+  grid-template-columns: clamp(140px, 16vw, 220px) 1fr;
+  column-gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+  padding-block: clamp(64px, 9vw, 140px);
+}
+
+.editorial-label-col {
+  padding-top: 0.35em; /* optically align with first headline line */
+}
+
+.label-tiny {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ped-muted-2);
+}
+
+.text-editorial {
+  margin: 0;
+  font-weight: 400;
+  font-size: clamp(2.25rem, 1rem + 3.6vw, 4.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ped-ink);
+}
+
+.ed-word {
+  display: inline;
+  font-weight: 400;
+  color: var(--ped-muted);
+  transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    font-weight 0.4s ease;
+}
+
+.ed-word.is-read {
+  font-weight: 700;
+  color: var(--ped-ink);
+}
+
+.editorial-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: clamp(28px, 4vw, 48px);
+}
+
+.editorial-tag-line {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background-color: var(--ped-accent);
+  flex-shrink: 0;
+}
+
+.editorial-tag-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ped-accent);
+}
+
+/* ===================================================
+   02 — MATERIAL
+   =================================================== */
+
+.material.container {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  column-gap: clamp(40px, 6vw, 88px);
+  align-items: stretch;
+  padding-block: clamp(48px, 7vw, 120px);
+}
+
+.material-media {
+  overflow: hidden;
+}
+
+.material-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.material-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heading-large.material-heading {
+  margin: clamp(16px, 2vw, 24px) 0 clamp(16px, 2vw, 24px);
+  font-size: clamp(2rem, 1rem + 2.6vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.material-heading-strong {
+  display: block;
+  font-weight: 700;
+  color: var(--ped-ink);
+}
+
+.material-heading-soft {
+  display: block;
+  font-weight: 400;
+  color: var(--ped-muted-2);
+}
+
+.material-copy {
+  max-width: 42ch;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ped-copy);
+}
+
+.material-stats {
+  display: flex;
+  margin-top: clamp(40px, 6vw, 96px);
+  padding-top: clamp(24px, 3vw, 36px);
+  border-top: 1px solid var(--ped-hairline);
+}
+
+.material-stat {
+  flex: 1;
+  padding-inline: clamp(16px, 2.5vw, 32px);
+  border-right: 1px solid var(--ped-hairline);
+}
+
+.material-stat:first-child {
+  padding-left: 0;
+}
+
+.material-stat:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+
+.material-stat-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ped-muted-2);
+}
+
+.material-stat-value {
+  display: block;
+  font-size: clamp(1.375rem, 1rem + 1vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ped-ink);
+}
+
+/* ===================================================
+   Responsive
+   =================================================== */
+
+@media (max-width: 900px) {
+  .editorial.container {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  .material.container {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+
+  .material-media img {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .material-content {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .material-stats {
+    flex-direction: column;
+    gap: clamp(20px, 6vw, 28px);
+  }
+
+  .material-stat {
+    padding-inline: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--ped-hairline);
+    padding-bottom: clamp(16px, 5vw, 24px);
+  }
+
+  .material-stat:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+/* ===================================================
+   Reduced motion: the component already adds `is-read`
+   to every word on mount when reduced motion is on, so
+   just make sure that lands instantly, not mid-fade.
+   =================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .ed-word {
+    transition: none;
+  }
+}

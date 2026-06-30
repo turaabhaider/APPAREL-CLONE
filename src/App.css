@@ -1,0 +1,246 @@
+/* --- Navigation --- */
+.nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 4vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  color: var(--text-light);
+  mix-blend-mode: difference;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+}
+
+.nav-cta {
+  border: 1px solid var(--text-light);
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-light);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-cta:hover {
+  background: var(--text-light);
+  color: var(--text-dark);
+}
+
+/* --- Hero Section --- */
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  overflow: hidden;
+}
+
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 4vw;
+}
+
+.hero-bottom-stats {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 4vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border-subtle-light);
+  z-index: 1;
+}
+
+/* --- Editorial Section --- */
+.editorial {
+  padding: 10vw 4vw;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 8vw;
+}
+
+@media (max-width: 768px) {
+  .editorial { grid-template-columns: 1fr; gap: 4vw; }
+}
+
+.editorial-img-wrapper {
+  margin-top: 5vw;
+  width: 100%;
+  height: 70vh;
+  background-color: #dcdcdc;
+  overflow: hidden;
+  position: relative;
+}
+
+.editorial-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Capabilities Section --- */
+.capabilities {
+  padding: 5vw 4vw 10vw;
+}
+
+.capability-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4vw 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.capability-row:first-child {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.cap-left {
+  display: flex;
+  align-items: center;
+  gap: 4vw;
+}
+
+.cap-desc {
+  max-width: 350px;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .capability-row { flex-direction: column; align-items: flex-start; gap: 2rem; }
+}
+
+/* --- Showcase Horizontal Scroll --- */
+.showcase-wrapper {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  position: relative;
+}
+
+.showcase-header {
+  padding: 10vw 4vw;
+}
+
+.horizontal-container {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.horizontal-track {
+  display: flex;
+  height: 100%;
+  width: max-content; /* Critical for horizontal GSAP scrolling */
+  will-change: transform;
+}
+
+.horizontal-panel {
+  width: 100vw;
+  height: 100%;
+  padding: 4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.panel-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.panel-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Stats & Footer --- */
+.stats-footer {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  padding: 10vw 4vw 4vw;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  border-top: 1px solid var(--border-subtle-light);
+  border-bottom: 1px solid var(--border-subtle-light);
+  padding: 4vw 0;
+  margin: 5vw 0;
+}
+
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.stat-number {
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 10vw;
+}
+
+.footer-links {
+  display: flex;
+  gap: 4vw;
+}
+
+.footer-col p {
+  margin-bottom: 0.5rem;
+}
+
+.footer-col p:first-child {
+  color: var(--border-subtle-light);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 4rem; }
+}

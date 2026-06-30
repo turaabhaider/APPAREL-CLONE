@@ -1,0 +1,64 @@
+:root {
+  --bg-primary: #f4f4ec;
+  --bg-dark: #0a0a0a;
+  --text-dark: #111111;
+  --text-light: #f4f4ec;
+  --accent-orange: #f24e1e;
+  --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --border-subtle: rgba(0, 0, 0, 0.1);
+  --border-subtle-light: rgba(255, 255, 255, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-dark);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Typography Hierarchy */
+.heading-jumbo {
+  font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.heading-large {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.text-editorial {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.label-tiny {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.accent-dot { color: var(--accent-orange); }
+.container { padding: 0 4vw; width: 100%; }
+.reveal-up { visibility: hidden; } /* Prevents FOUC before GSAP takes over */

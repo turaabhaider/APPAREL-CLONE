@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Inter:wght@400;500;600&display=swap');
+
+/* ==========================================================================
+   Capabilities — "Four floors. One standard."
+   Self-contained: every token this component needs lives in this file,
+   scoped under .capabilities so it can't leak into / collide with global CSS.
+   ========================================================================== */
+
+.capabilities {
+  --cap-bg: #f3efe6;
+  --cap-ink: #15140f;
+  --cap-muted: #6f6a61;
+  --cap-faint: #a39c8f;
+  --cap-line: #ddd6c8;
+  --cap-accent: #ff4521;
+  --cap-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  background: var(--cap-bg);
+  color: var(--cap-ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+  overflow: hidden;
+}
+
+/* Falls back gracefully if a global .container class isn't supplying these */
+.capabilities.container {
+  max-width: 1480px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+  box-sizing: border-box;
+}
+
+/* ---------- Eyebrow ---------- */
+.capabilities__eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cap-faint);
+  margin: 0 0 clamp(1.5rem, 4vw, 2.25rem);
+}
+
+/* ---------- Headline ---------- */
+.capabilities__heading {
+  font-family: 'Archivo', 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.75rem, 7.4vw, 6.75rem);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  margin: 0 0 clamp(2.5rem, 6vw, 4.5rem);
+}
+
+/* ---------- List ---------- */
+.capabilities__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--cap-line);
+}
+
+.capability-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  column-gap: clamp(2rem, 6vw, 5rem);
+  row-gap: 1.25rem;
+  padding-block: clamp(2rem, 5.5vw, 3.75rem);
+  border-bottom: 1px solid var(--cap-line);
+}
+
+/* number + title cluster */
+.capability-row__main {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.capability-row__index {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--cap-faint);
+  padding-bottom: 0.55em;
+  font-variant-numeric: tabular-nums;
+}
+
+.capability-row__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0;
+  font-family: 'Archivo', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.1rem, 5.4vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: var(--cap-ink);
+  cursor: default;
+  transition: color 0.45s var(--cap-ease), transform 0.45s var(--cap-ease);
+}
+
+.capability-row__arrow {
+  width: 0.5em;
+  height: 0.5em;
+  flex-shrink: 0;
+  color: var(--cap-accent);
+  opacity: 0;
+  transform: translateX(-0.4em);
+  transition: opacity 0.4s var(--cap-ease), transform 0.4s var(--cap-ease);
+}
+
+/* hover / keyboard-focus interaction — title turns orange and nudges right */
+.capability-row:hover .capability-row__title,
+.capability-row:focus-within .capability-row__title {
+  color: var(--cap-accent);
+  transform: translateX(0.12em);
+}
+
+.capability-row:hover .capability-row__arrow,
+.capability-row:focus-within .capability-row__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.capability-row__desc {
+  flex: 0 1 380px;
+  align-self: center;
+  margin: 0;
+  font-size: clamp(0.9rem, 1.05vw, 1rem);
+  line-height: 1.65;
+  color: var(--cap-muted);
+}
+
+/* ---------- Scroll-reveal hook ----------
+   Pairs with a global reveal-on-scroll observer that toggles a class such
+   as .is-visible on .reveal-up. Default state stays fully visible so the
+   section never disappears if no observer is present. */
+.reveal-up {
+  opacity: 1;
+  transform: none;
+}
+.reveal-up:not(.is-visible) {
+  transition: opacity 0.7s var(--cap-ease), transform 0.7s var(--cap-ease);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  .capability-row {
+    align-items: flex-start;
+  }
+  .capability-row__desc {
+    flex-basis: 100%;
+    align-self: flex-start;
+    max-width: 52ch;
+  }
+}
+
+@media (max-width: 560px) {
+  .capabilities.container {
+    padding-inline: 1.25rem;
+  }
+  .capability-row {
+    padding-block: clamp(1.5rem, 7vw, 2.25rem);
+  }
+  .capability-row__main {
+    flex: 1 1 100%;
+    gap: 0.6rem;
+  }
+  .capability-row__title {
+    font-size: clamp(1.85rem, 9.5vw, 2.75rem);
+  }
+  .capability-row__index {
+    padding-bottom: 0.42em;
+  }
+  .capability-row__desc {
+    font-size: 0.9rem;
+  }
+}
+
+/* No pointer = no hover affordance to chase; keep titles legible only */
+@media (hover: none) {
+  .capability-row__arrow {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capability-row__title,
+  .capability-row__arrow,
+  .reveal-up {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,266 @@
+/* =========================================================
+   HERO SECTION — PIXEL-MATCHED CLONE
+   Full-bleed photo + dark vignette, massive bold headline,
+   right-aligned subtitle, and a 3-column stats bar with a
+   centered scroll cue.
+   ========================================================= */
+
+:root {
+  --hero-white: #ffffff;
+  --hero-bg: #0a0a0a;
+  --hero-accent: #f24e1e;
+  --hero-dim-50: rgba(255, 255, 255, 0.5);
+  --hero-dim-65: rgba(255, 255, 255, 0.65);
+  --hero-dim-80: rgba(255, 255, 255, 0.8);
+  --hero-line: rgba(255, 255, 255, 0.15);
+  --hero-font: "Helvetica Neue", "Inter", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Arial, sans-serif;
+}
+
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--hero-bg);
+  color: var(--hero-white);
+  overflow: hidden;
+  font-family: var(--hero-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------------------------------------------------------
+   Background photo + vignette
+   --------------------------------------------------------- */
+.hero-bg-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-img-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.9);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.72) 0%,
+    /* Darker top so the navbar reads cleanly */ rgba(0, 0, 0, 0.6) 38%,
+    /* Mid section stays readable behind the headline */ rgba(0, 0, 0, 0.92)
+      100% /* Heavy fade into the stats bar */
+  );
+  z-index: 2;
+}
+
+/* ---------------------------------------------------------
+   Headline + subtitle
+   --------------------------------------------------------- */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 0 clamp(24px, 5vw, 80px); /* matches nav/container so the
+    headline's left edge lines up with the logo, not a separate 4vw scale */
+  margin-top: -4vh; /* Sits slightly above true vertical center */
+}
+
+.hero-title-wrapper {
+  max-width: 1400px;
+}
+
+.heading-massive {
+  font-size: clamp(2.6rem, 8.5vw, 124px);
+  font-weight: 900; /* Black weight to match the reference's heavy cut */
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  margin: 0;
+  color: var(--hero-white);
+}
+
+/* The small orange square that punctuates "apparel" */
+.accent-square {
+  display: inline-block;
+  width: 0.13em;
+  height: 0.13em;
+  background-color: var(--hero-accent);
+  margin-left: 0.1em;
+  transform: translateY(-0.04em);
+  border-radius: 1px;
+}
+
+.hero-subtitle-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1400px;
+  margin-top: 4.5vh;
+}
+
+.subtitle-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--hero-dim-80);
+  letter-spacing: 0.01em;
+  max-width: 280px;
+  text-align: left;
+  line-height: 1.4;
+}
+
+/* ---------------------------------------------------------
+   Bottom stats bar + scroll cue
+   --------------------------------------------------------- */
+.hero-bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 2.2rem clamp(24px, 5vw, 80px);
+  border-top: 1px solid var(--hero-line);
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-block:nth-child(3) {
+  /* CAPACITY — nudged right of the centered scroll line */
+  padding-left: 2vw;
+}
+
+.stat-block:nth-child(4) {
+  /* FOOTPRINT — keeps grid rhythm with CAPACITY */
+  padding-left: 2vw;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--hero-dim-50);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.stat-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--hero-white);
+  letter-spacing: -0.01em;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  height: 100px;
+  pointer-events: none;
+}
+
+.scroll-text {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--hero-dim-50);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: -15px;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: var(--hero-white);
+  animation: scrollDrop 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-line::after {
+    animation: none;
+  }
+}
+
+@keyframes scrollDrop {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(300%);
+  }
+  100% {
+    transform: translateY(300%);
+  }
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .hero-bottom-bar {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .scroll-indicator {
+    display: none;
+  }
+  .stat-block:nth-child(4) {
+    grid-column: 1 / -1;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-subtitle-wrapper {
+    justify-content: flex-start;
+    margin-top: 2rem;
+  }
+  .hero-bottom-bar {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 4vw;
+  }
+  .stat-block {
+    padding-left: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    margin-top: -2vh;
+  }
+  .heading-massive {
+    letter-spacing: -0.03em;
+  }
+  .subtitle-text {
+    max-width: 100%;
+  }
+}
