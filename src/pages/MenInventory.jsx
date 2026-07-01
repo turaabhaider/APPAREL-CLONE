@@ -14,6 +14,10 @@ export default function MenInventory() {
       <Navbar isInventoryPage={true} />
       
       <main className="category-container">
+        <a href="/inventory" className="back-to-inventory-link">
+          &larr; RETURN TO INVENTORY
+        </a>
+
         <header className="cat-header">
           <h1 className="cat-title">Men<span className="brand-dot">.</span></h1>
           <div className="cat-meta">
