@@ -146,3 +146,35 @@
     display: none;
   }
 }
+/* =========================================================
+   INVENTORY PAGE / LIGHT THEME OVERRIDES
+   ========================================================= */
+.nav-header.inventory-nav {
+  mix-blend-mode: normal;
+  color: #111111;
+}
+
+.nav-header.inventory-nav .nav-logo,
+.nav-header.inventory-nav .logo-line,
+.nav-header.inventory-nav .nav-links li a {
+  color: #111111;
+  text-shadow: none;
+}
+
+.nav-header.inventory-nav .logo-tagline {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* Invert CTA to Solid Black */
+.nav-header.inventory-nav .nav-cta {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+  text-decoration: none;
+}
+
+.nav-header.inventory-nav .nav-cta:hover {
+  background: transparent;
+  color: #111111;
+  border-color: #111111;
+}
