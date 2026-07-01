@@ -1,42 +1,26 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Editorial from './components/Editorial';
-import Capabilities from './components/Capabilities';
-import Showcase from './components/Showcase';
-import Footer from './components/Footer';
-
+import Home from './pages/Home';
+import Inventory from './pages/Inventory';
 import './styles/globals.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function App() {
-  
+// 1. Create a helper component to watch for page changes
+function RouteManager() {
+  const { pathname } = useLocation();
+
   useLayoutEffect(() => {
-    // 1. Initialize Vanilla Lenis Smooth Scrolling
-    const lenis = new Lenis({
-      duration: 1.5,
-      lerp: 0.08,
-      smoothWheel: true,
-      wheelMultiplier: 1,
-    });
+    // Scroll to the very top when navigating between pages
+    window.scrollTo(0, 0);
+    ScrollTrigger.refresh();
 
-    // Synchronize Lenis scrolling with GSAP ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // 2. Run Global Animations
+    // Re-run GSAP animations for the new DOM elements on the current page
     let ctx = gsap.context(() => {
-      // Global stagger fade-up for elements across all components
       gsap.utils.toArray('.reveal-up').forEach((elem) => {
         gsap.fromTo(elem, 
           { y: 60, autoAlpha: 0 },
@@ -54,23 +38,46 @@ export default function App() {
       });
     });
 
-    // Clean up instances on component unmount
+    // Clean up animations when leaving the page so they don't break on return
+    return () => ctx.revert();
+  }, [pathname]); // <--- This runs every time the URL changes
+
+  return null;
+}
+
+export default function App() {
+  
+  useLayoutEffect(() => {
+    // 2. Lenis stays here because we want smooth scrolling active globally forever
+    const lenis = new Lenis({
+      duration: 1.5,
+      lerp: 0.08,
+      smoothWheel: true,
+      wheelMultiplier: 1,
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
     return () => {
-      ctx.revert();
       lenis.destroy();
     };
   }, []);
 
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <Editorial />
-        <Capabilities />
-        <Showcase />
-        <Footer />
-      </main>
-    </>
+    <Router>
+      {/* 3. Drop the RouteManager inside the Router so it can detect URL changes */}
+      <RouteManager />
+      
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/inventory" element={<Inventory />} />
+      </Routes>
+    </Router>
   );
 }
