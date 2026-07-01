@@ -72,7 +72,7 @@ export default function Footer() {
 
         <div className="header-right reveal-up">
           <a href="#inventory" className="inventory-btn">
-            INVENTORY &rarr;
+             &rarr;
           </a>
         </div>
       </div>
