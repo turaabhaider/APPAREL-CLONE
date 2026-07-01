@@ -1,25 +1,30 @@
-import React, { useLayoutEffect, useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+// Import your pages
 import Home from './pages/Home';
 import Inventory from './pages/Inventory';
+import MenInventory from './pages/MenInventory';
+import WomenInventory from './pages/WomenInventory';
+
+// Import styles
 import './styles/globals.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// 1. Create a helper component to watch for page changes
+// Helper component to handle route-based animations and scroll behavior
 function RouteManager() {
   const { pathname } = useLocation();
 
   useLayoutEffect(() => {
-    // Scroll to the very top when navigating between pages
+    // Reset scroll position to top on navigation[cite: 12]
     window.scrollTo(0, 0);
     ScrollTrigger.refresh();
 
-    // Re-run GSAP animations for the new DOM elements on the current page
+    // Re-initialize animations for new page elements[cite: 12]
     let ctx = gsap.context(() => {
       gsap.utils.toArray('.reveal-up').forEach((elem) => {
         gsap.fromTo(elem, 
@@ -38,9 +43,8 @@ function RouteManager() {
       });
     });
 
-    // Clean up animations when leaving the page so they don't break on return
-    return () => ctx.revert();
-  }, [pathname]); // <--- This runs every time the URL changes
+    return () => ctx.revert(); // Cleanup on route change[cite: 12]
+  }, [pathname]);
 
   return null;
 }
@@ -48,7 +52,7 @@ function RouteManager() {
 export default function App() {
   
   useLayoutEffect(() => {
-    // 2. Lenis stays here because we want smooth scrolling active globally forever
+    // Initialize smooth scrolling[cite: 12]
     const lenis = new Lenis({
       duration: 1.5,
       lerp: 0.08,
@@ -71,12 +75,13 @@ export default function App() {
 
   return (
     <Router>
-      {/* 3. Drop the RouteManager inside the Router so it can detect URL changes */}
       <RouteManager />
       
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/inventory" element={<Inventory />} />
+        <Route path="/inventory/men" element={<MenInventory />} />
+        <Route path="/inventory/women" element={<WomenInventory />} />
       </Routes>
     </Router>
   );
