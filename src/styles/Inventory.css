@@ -1,0 +1,141 @@
+/* src/styles/Inventory.css */
+
+.inventory-page {
+  background-color: #f4f3ee; /* Match the exact cream/paper background */
+  min-height: 100vh;
+  width: 100%;
+  color: #111111;
+  font-family: "Helvetica Neue", -apple-system, sans-serif;
+  padding-bottom: 15vh; /* Space before footer */
+}
+
+.inventory-container {
+  padding: 22vh 4vw 0; /* Clears the absolute navbar and provides top margin */
+  max-width: 100%;
+}
+
+/* Header Layout */
+.inv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 8vh;
+}
+
+.inv-title-area {
+  max-width: 65%;
+}
+
+.inv-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.inv-title {
+  font-size: clamp(4rem, 9vw, 130px);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.inv-title .brand-comma {
+  color: #eb4511; /* The exact brand orange */
+}
+
+.inv-desc-area p {
+  max-width: 320px;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.5;
+  margin: 0 0 1rem 0; /* Aligns visually with the bottom of the heading */
+}
+
+/* Grid Layout */
+.inv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2vw;
+}
+
+.inv-card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.inv-card-image-box {
+  background-color: #eb4511; /* Brand orange */
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.inv-card-count {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.inv-card-img {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom;
+  display: block;
+}
+
+/* Footer Section of Cards */
+.inv-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.inv-card-title {
+  font-size: clamp(4rem, 8vw, 120px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.8;
+  margin: 0;
+  transform: translateY(-5px); /* Pulls it slightly tighter to the box */
+}
+
+.inv-card-link {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .inv-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .inv-desc-area p {
+    margin: 0;
+  }
+  .inv-grid {
+    grid-template-columns: 1fr;
+    gap: 4vw;
+  }
+}
