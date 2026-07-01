@@ -159,3 +159,68 @@
   background-color: #111111;
   color: #ffffff;
 }
+
+/* ==========================================================
+   PHONE / TABLET OVERRIDES ONLY
+   Nothing above this point is touched — desktop/laptop looks
+   exactly as it did before. Same 1024 / 768 / 480 tiering as
+   the Hero section.
+   ========================================================== */
+
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4vw;
+  }
+  /* If the grid has an odd number of cards (Men has 3), let the
+     lone last card stretch across the row instead of sitting
+     half-width and orphaned — same idea as the Hero's
+     .stat-block:nth-child(4) full-width treatment. */
+  .product-grid .product-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-container {
+    /* var(--nav-height), from Navbar.css, clears the fixed nav
+       exactly — the base 20vh guess can run short on shorter or
+       landscape phone screens. */
+    padding: calc(var(--nav-height, 110px) + 3vh) 5vw 8vh;
+  }
+  .cat-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 5vh;
+  }
+  .cat-meta {
+    text-align: left;
+  }
+  .back-to-inventory-link {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .product-grid .product-card:last-child:nth-child(odd) {
+    grid-column: auto; /* back to normal now that everything is 1 column */
+  }
+  .cat-title {
+    /* clamp()'s 4rem floor stays fixed on anything under ~640px wide —
+       this lets "Men."/"Women." keep scaling down on small phones
+       instead of staying pinned at 64px. */
+    font-size: clamp(2.5rem, 13vw, 140px);
+    letter-spacing: -0.03em;
+  }
+  .product-title {
+    font-size: 1.1rem;
+  }
+  .product-image-box {
+    margin-bottom: 1rem;
+  }
+}

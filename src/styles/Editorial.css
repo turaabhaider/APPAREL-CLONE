@@ -219,21 +219,33 @@
 /* ===================================================
    Responsive
    =================================================== */
+/* ===================================================
+   TABLET
+   =================================================== */
 
 @media (max-width: 900px) {
+
   .editorial.container {
     grid-template-columns: 1fr;
-    row-gap: 20px;
+    row-gap: 24px;
+    padding-block: 56px;
+  }
+
+  .editorial-label-col {
+    padding-top: 0;
   }
 
   .material.container {
     grid-template-columns: 1fr;
     row-gap: 32px;
+    padding-block: 48px;
   }
 
   .material-media img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
     height: auto;
-    aspect-ratio: 4 / 5;
+    object-fit: cover;
   }
 
   .material-content {
@@ -241,33 +253,115 @@
   }
 }
 
-@media (max-width: 560px) {
-  .material-stats {
-    flex-direction: column;
-    gap: clamp(20px, 6vw, 28px);
-  }
-
-  .material-stat {
-    padding-inline: 0;
-    border-right: none;
-    border-bottom: 1px solid var(--ped-hairline);
-    padding-bottom: clamp(16px, 5vw, 24px);
-  }
-
-  .material-stat:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-}
 
 /* ===================================================
-   Reduced motion: the component already adds `is-read`
-   to every word on mount when reduced motion is on, so
-   just make sure that lands instantly, not mid-fade.
+   PHONE
    =================================================== */
 
-@media (prefers-reduced-motion: reduce) {
-  .ed-word {
-    transition: none;
+@media (max-width:560px){
+
+  .editorial.container{
+      padding-inline:24px;
+      padding-block:44px;
+      row-gap:18px;
   }
+
+  .label-tiny{
+      font-size:11px;
+      letter-spacing:.14em;
+  }
+
+  .text-editorial{
+      font-size:clamp(2rem,8vw,2.5rem);
+      line-height:1.08;
+      letter-spacing:-0.03em;
+      max-width:none;
+  }
+
+  .editorial-tag{
+      margin-top:22px;
+  }
+
+  .editorial-tag-line{
+      width:34px;
+  }
+
+  .editorial-tag-text{
+      font-size:11px;
+  }
+
+  /* ---------- Material ---------- */
+
+  .material.container{
+      padding-inline:24px;
+      padding-block:40px;
+      row-gap:24px;
+  }
+
+  .material-media img{
+      width:100%;
+      aspect-ratio:16/10;
+      height:auto;
+      object-fit:cover;
+  }
+
+  .material-content{
+      gap:18px;
+  }
+
+  .heading-large.material-heading{
+      margin:0;
+      font-size:clamp(2.1rem,8vw,2.7rem);
+      line-height:1.02;
+      letter-spacing:-0.03em;
+  }
+
+  .material-copy{
+      font-size:15px;
+      line-height:1.7;
+      max-width:100%;
+  }
+
+  /* ---------- Stats ---------- */
+
+  .material-stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      margin-top:8px;
+      padding-top:18px;
+      gap:0;
+      border-top:1px solid var(--ped-hairline);
+  }
+
+  .material-stat{
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      padding:0 12px;
+      border-right:1px solid var(--ped-hairline);
+      border-bottom:none;
+  }
+
+  .material-stat:first-child{
+      padding-left:0;
+  }
+
+  .material-stat:last-child{
+      padding-right:0;
+      border-right:none;
+  }
+
+  .material-stat-label{
+      font-size:10px;
+      letter-spacing:.14em;
+      margin-bottom:6px;
+      white-space:nowrap;
+  }
+
+  .material-stat-value{
+      font-size:22px;
+      font-weight:700;
+      line-height:1;
+  }
+
 }

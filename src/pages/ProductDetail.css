@@ -1,15 +1,17 @@
-/* src/pages/ProductDetail.css */
-
 .product-detail-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4vh 4vw 8vh;
+  /* var(--nav-height) comes from Navbar.css — clears the fixed nav first,
+     then adds normal breathing room below it. The 110px fallback is only
+     used if Navbar.css hasn't loaded for some reason. */
+  padding-top: calc(var(--nav-height, 110px) + 3vh);
+  padding-right: 4vw;
+  padding-bottom: 8vh;
+  padding-left: 4vw;
   font-family: "Helvetica Neue", -apple-system, sans-serif;
   color: #111111;
 }
 
 .pd-breadcrumb {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -30,7 +32,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4vw;
-  margin-bottom: 8vh;
+  margin-bottom: 10vh;
 }
 
 .pd-image-box {
@@ -40,23 +42,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 480px;
+  min-height: 640px;
 }
 
 .pd-image {
-  max-width: 70%;
-  max-height: 420px;
+  max-width: 65%;
+  max-height: 560px;
   object-fit: contain;
 }
 
 .pd-image-box .gsm-badge {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 24px;
+  right: 24px;
   background-color: #ffffff;
   border-radius: 999px;
-  padding: 0.4rem 0.9rem;
-  font-size: 11px;
+  padding: 0.5rem 1.1rem;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.05em;
 }
@@ -64,52 +66,53 @@
 .pd-info {
   display: flex;
   flex-direction: column;
+  padding-top: 0.5rem;
 }
 
 .pd-eyebrow {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: rgba(17, 17, 17, 0.5);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .pd-title {
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-size: clamp(2.25rem, 4vw, 4rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  margin: 0 0 1.25rem 0;
 }
 
 .pd-tagline {
-  font-size: 13px;
+  font-size: 15px;
   color: rgba(17, 17, 17, 0.6);
   margin: 0;
 }
 
 .pd-divider {
   height: 1px;
-  background-color: rgba(17, 17, 17, 0.1);
-  margin: 1.5rem 0;
+  background-color: rgba(17, 17, 17, 0.12);
+  margin: 2rem 0;
 }
 
 .pd-specs-row {
   display: flex;
-  gap: 4rem;
-  margin-bottom: 1.5rem;
+  gap: 5rem;
+  margin-bottom: 2rem;
 }
 
 .pd-spec {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.5rem;
 }
 
 .pd-spec-label,
 .pd-inventory-eyebrow,
 .pd-size-units-label {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: rgba(17, 17, 17, 0.45);
@@ -117,32 +120,32 @@
 }
 
 .pd-spec-value {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
 }
 
 .pd-spec-block {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .pd-spec-text {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
   color: rgba(17, 17, 17, 0.75);
-  margin: 0.35rem 0 0 0;
-  max-width: 34ch;
+  margin: 0.5rem 0 0 0;
+  max-width: 38ch;
 }
 
 .pd-color-swatches {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
 }
 
 .pd-color-swatch {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 999px;
   border: 1px solid rgba(17, 17, 17, 0.25);
   background: transparent;
@@ -160,22 +163,22 @@
 .pd-actions {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  gap: 1.75rem;
+  margin-top: 1.5rem;
 }
 
 .pd-btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   background-color: #111111;
   color: #ffffff;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 0.75rem 1.5rem;
+  padding: 0.9rem 1.75rem;
   border-radius: 999px;
   transition: background-color 0.2s ease;
 }
@@ -185,7 +188,7 @@
 }
 
 .pd-btn-secondary {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -201,7 +204,7 @@
 
 .pd-inventory {
   border-top: 1px solid rgba(17, 17, 17, 0.1);
-  padding-top: 4vh;
+  padding-top: 5vh;
   scroll-margin-top: 2rem;
 }
 
@@ -209,12 +212,13 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .pd-inventory-title {
-  font-size: 1.5rem;
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
   font-weight: 800;
+  letter-spacing: -0.02em;
   margin: 0.25rem 0 0 0;
 }
 
@@ -222,7 +226,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: rgba(17, 17, 17, 0.45);
@@ -230,10 +234,10 @@
 }
 
 .pd-inventory-total-value {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 800;
   color: #111111;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
   margin-top: 0.25rem;
   text-transform: none;
 }
@@ -241,36 +245,38 @@
 .pd-size-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .pd-size-box {
   border: 1px solid rgba(17, 17, 17, 0.12);
   border-radius: 4px;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .pd-size-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
 }
 
 .pd-size-label {
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 800;
 }
 
 .pd-size-value {
   display: block;
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.85rem;
 }
 
 .pd-size-bar-track {
-  height: 3px;
+  height: 4px;
   background-color: rgba(17, 17, 17, 0.08);
   border-radius: 2px;
   overflow: hidden;
@@ -289,42 +295,44 @@
   background-color: #111111;
   color: #ffffff;
   border-radius: 4px;
-  padding: 0.85rem 1.5rem;
-  font-size: 12px;
+  padding: 1.25rem 2rem;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .pd-total-bar span:last-child {
-  font-size: 1rem;
+  font-size: 1.75rem;
+  text-transform: none;
+  letter-spacing: -0.01em;
 }
 
 .pd-cta {
   text-align: center;
-  margin-top: 6vh;
-  padding-top: 4vh;
+  margin-top: 7vh;
+  padding-top: 5vh;
   border-top: 1px solid rgba(17, 17, 17, 0.1);
 }
 
 .pd-cta p {
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(17, 17, 17, 0.6);
-  margin: 0 0 1rem 0;
+  margin: 0 0 1.25rem 0;
 }
 
 .pd-cta-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   background-color: #111111;
   color: #ffffff;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 0.85rem 1.75rem;
+  padding: 1rem 2rem;
   border-radius: 999px;
   transition: background-color 0.2s ease;
 }
@@ -334,7 +342,7 @@
 }
 
 .product-not-found {
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 1rem;
 }
 
@@ -342,7 +350,13 @@
   .pd-top {
     grid-template-columns: 1fr;
   }
+  .pd-image-box {
+    min-height: 380px;
+  }
   .pd-size-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .pd-specs-row {
+    gap: 2.5rem;
   }
 }

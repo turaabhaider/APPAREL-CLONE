@@ -14,6 +14,12 @@ export default function ProductDetail() {
     product?.colors?.find((c) => c.selected)?.name || null
   );
 
+  // Find the full color object for whatever is currently selected, so we can
+  // pull its image (falls back to the product's default image if that color
+  // doesn't have its own image, e.g. only one colorway exists).
+  const activeColor = product?.colors?.find((c) => c.name === selectedColor);
+  const displayImage = activeColor?.image || product?.image;
+
   if (!product) {
     return (
       <div className="category-page">
@@ -43,7 +49,11 @@ export default function ProductDetail() {
         <div className="pd-top">
           <div className="pd-image-box">
             <span className="gsm-badge">{product.gsm} GSM</span>
-            <img src={product.image} alt={product.name} className="pd-image" />
+            <img
+              src={displayImage}
+              alt={activeColor ? `${product.name} - ${activeColor.name}` : product.name}
+              className="pd-image"
+            />
           </div>
 
           <div className="pd-info">

@@ -11,6 +11,10 @@ import babyTee from '../assets/Premium Baby Tee.png';
 import boyfriendTee from '../assets/Premium Boyfriend Tee.png';
 import cropTee from '../assets/Jersey Boxy Crop Tee.png';
 import ribBoxyCropTee from '../assets/Rib Boxy Crop Tee.png';
+import mineralTeeGray from '../assets/Mineral Wash Tee-grey.png';
+import babyTeeWhite from '../assets/Premium Baby Tee-white.png';
+import cropTeeWhite from '../assets/Jersey Boxy Crop Tee-white.png';
+import ribBoxyCropTeeWhite from '../assets/Rib Boxy Crop Tee-white.png';
 
 const products = [
   {
@@ -80,8 +84,8 @@ const products = [
     packing: null,
     fabric: '100% cotton, garment-dyed mineral wash. Lived-in texture from the first wear.',
     colors: [
-      { name: 'Black', selected: true },
-      { name: 'Gray', selected: false },
+      { name: 'Black', selected: true, image: mineralTee },
+      { name: 'Gray', selected: false, image: mineralTeeGray },
     ],
     inventoryLabel: 'Black — in stock',
     sizes: [
@@ -108,8 +112,8 @@ const products = [
     packing: null,
     fabric: '50% cotton / 50% polyester, 1x1 baby rib. Soft hand with structured stretch.',
     colors: [
-      { name: 'Natural', selected: true },
-      { name: 'White', selected: false },
+      { name: 'Natural', selected: true, image: babyTee },
+      { name: 'White', selected: false, image: babyTeeWhite },
     ],
     inventoryLabel: 'Natural — in stock',
     sizes: [
@@ -161,8 +165,8 @@ const products = [
     packing: null,
     fabric: '100% cotton jersey. Lightweight, boxy cropped silhouette with a clean shoulder line.',
     colors: [
-      { name: 'Natural', selected: true },
-      { name: 'White', selected: false },
+      { name: 'Natural', selected: true, image: cropTee },
+      { name: 'White', selected: false, image: cropTeeWhite },
     ],
     inventoryLabel: 'Natural — in stock',
     sizes: [
@@ -189,8 +193,8 @@ const products = [
     packing: null,
     fabric: '100% cotton 1x1 rib. Heavier, structured rib knit with a defined boxy crop.',
     colors: [
-      { name: 'Natural', selected: true },
-      { name: 'White', selected: false },
+      { name: 'Natural', selected: true, image: ribBoxyCropTee },
+      { name: 'White', selected: false, image: ribBoxyCropTeeWhite },
     ],
     inventoryLabel: 'Natural — in stock',
     sizes: [

@@ -224,43 +224,34 @@
 /* ---------------------------------------------------------
    Responsive
    --------------------------------------------------------- */
-@media (max-width: 1024px) {
-  .hero-bottom-bar {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-  .scroll-indicator {
-    display: none;
-  }
-  .stat-block:nth-child(4) {
-    grid-column: 1 / -1;
-    padding-left: 0;
-  }
-}
-
+/* ==========================
+   Hero - Mobile (≤768px)
+   ========================== */
 @media (max-width: 768px) {
-  .hero-subtitle-wrapper {
-    justify-content: flex-start;
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    width: 100%;
     margin-top: 2rem;
   }
-  .hero-bottom-bar {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem 4vw;
-  }
-  .stat-block {
-    padding-left: 0 !important;
-  }
-}
 
-@media (max-width: 480px) {
-  .hero-content {
-    margin-top: -2vh;
+  .hero-stat {
+    text-align: center;
   }
-  .heading-massive {
-    letter-spacing: -0.03em;
+
+  .hero-stat-number {
+    font-size: 1.25rem;
   }
-  .subtitle-text {
-    max-width: 100%;
+
+  .hero-stat-label {
+    font-size: 0.75rem;
+  }
+
+  .scroll-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
   }
 }

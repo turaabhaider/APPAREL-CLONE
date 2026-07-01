@@ -3,6 +3,13 @@
   --ptx-dim: #c9c2b5;
   --ptx-cream: #f3efe7;
   --ptx-accent: #ff5a33;
+  /* Real rendered height of .nav-header (26px padding top+bottom + logo
+     block). Since the nav is `position: fixed` it takes up no space in
+     normal flow, so any page that isn't meant to sit under a hero image
+     (i.e. every inventory/product page) needs to push its content down
+     by this much manually. Keep this in sync if the logo/padding ever
+     changes size. */
+  --nav-height: 118px;
 }
 
 .nav-header {

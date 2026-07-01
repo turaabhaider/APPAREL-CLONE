@@ -199,37 +199,116 @@
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 992px) {
-  .footer-top-header {
-    flex-direction: column;
-    gap: 2rem;
-  }
-  
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .stat-col {
-    border-right: none;
-  }
-  
-  .stat-col:nth-child(odd) {
-    border-right: 1px solid var(--border-subtle-light);
-  }
-  
-  .stat-col:nth-child(1), 
-  .stat-col:nth-child(2) {
-    border-bottom: 1px solid var(--border-subtle-light);
-  }
-  
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4rem;
-  }
-  
-  .footer-links {
-    flex-wrap: wrap;
-    gap: 2rem 4rem;
-  }
+/* =====================================================
+   PHONE (≤768px)
+===================================================== */
+
+@media (max-width:768px){
+
+.stats-footer{
+    padding:48px 24px;
+}
+
+.footer-top-header{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    margin-bottom:42px;
+}
+
+.header-left{
+    gap:10px;
+}
+
+.heading-large{
+    font-size:clamp(2.8rem,12vw,4rem);
+    line-height:.92;
+    letter-spacing:-.04em;
+}
+
+.inventory-btn{
+    align-self:flex-start;
+}
+
+/* ---------- Stats ---------- */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    margin:42px 0;
+    border-top:1px solid var(--border-subtle-light);
+}
+
+.stat-col{
+    padding:34px 0;
+    border-right:none;
+    border-bottom:1px solid var(--border-subtle-light);
+}
+
+.stat-col:last-child{
+    border-bottom:none;
+}
+
+.stat-number{
+    font-size:clamp(4rem,18vw,5.5rem);
+    margin-bottom:14px;
+    line-height:.9;
+}
+
+.stat-title{
+    margin-bottom:10px;
+}
+
+.stat-subtext{
+    font-size:.9rem;
+    line-height:1.6;
+}
+
+/* ---------- Footer ---------- */
+
+.footer-bottom{
+    display:flex;
+    flex-direction:column;
+    gap:50px;
+    align-items:flex-start;
+}
+
+.heading-huge{
+    font-size:clamp(3rem,14vw,4.6rem);
+    line-height:.9;
+}
+
+.email-link{
+    margin-top:8px;
+    font-size:1.1rem;
+}
+
+.footer-links{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:32px;
+}
+
+.footer-col p{
+    font-size:.95rem;
+}
+
+.footer-divider{
+    margin:54px 0;
+}
+
+.footer-bottom-logo{
+    padding-bottom:12px;
+}
+
+.big-logo strong{
+    font-size:clamp(3.3rem,16vw,5rem);
+    line-height:.92;
+}
+
+.big-logo span{
+    font-size:.8rem;
+}
+
 }
