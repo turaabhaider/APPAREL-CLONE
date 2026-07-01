@@ -127,3 +127,14 @@
   align-items: center;
   gap: 4px;
 }
+/* Ensure the page container takes up at least the full screen height */
+.category-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* This pushes the footer down by taking up all available space */
+.category-container {
+  flex: 1;
+}

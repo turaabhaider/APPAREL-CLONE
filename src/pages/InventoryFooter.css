@@ -79,3 +79,13 @@
   color: rgba(255, 255, 255, 0.4);
   margin-top: 4vh;
 }
+/* src/pages/InventoryFooter.css */
+
+.inventory-site-footer {
+  background-color: #111111;
+  color: #ffffff;
+  /* Updated the last value from 4vh to 12vh for more black space at the bottom */
+  padding: 8vh 4vw 12vh; 
+  font-family: "Helvetica Neue", -apple-system, sans-serif;
+  margin-top: 10vh;
+}

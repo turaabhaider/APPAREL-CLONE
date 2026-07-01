@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import InventoryFooter from './InventoryFooter';
 import '../styles/Inventory.css';
 import menImg from '../assets/men.png';
 import womenImg from '../assets/women.png';
@@ -11,7 +11,11 @@ export default function Inventory() {
     <div className="inventory-page">
       <Navbar isInventoryPage={true} />
       
-      <main className="inventory-container" style={{ paddingBottom: '15vh' }}>
+      {/* 
+        Container now uses CSS 'flex: 1' to occupy available space,
+        automatically pushing the footer to the bottom.
+      */}
+      <main className="inventory-container">
         <section className="inv-header">
           <div className="inv-title-area">
             <span className="inv-eyebrow">INVENTORY</span>
@@ -27,7 +31,6 @@ export default function Inventory() {
         </section>
 
         <section className="inv-grid">
-          {/* Changed <a> to <Link> */}
           <Link to="/inventory/men" className="inv-card">
             <div className="inv-card-image-box">
               <span className="inv-card-count">3 STYLES</span>
@@ -39,7 +42,6 @@ export default function Inventory() {
             </div>
           </Link>
 
-          {/* Changed <a> to <Link> */}
           <Link to="/inventory/women" className="inv-card">
             <div className="inv-card-image-box">
               <span className="inv-card-count">4 STYLES</span>
@@ -53,7 +55,7 @@ export default function Inventory() {
         </section>
       </main>
 
-      <Footer />
+      <InventoryFooter />
     </div>
   );
 }

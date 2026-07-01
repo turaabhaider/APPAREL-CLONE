@@ -139,3 +139,20 @@
     gap: 4vw;
   }
 }
+/* src/styles/Inventory.css */
+
+.inventory-page {
+  background-color: #f4f3ee;
+  min-height: 100vh;
+  width: 100%;
+  color: #111111;
+  font-family: "Helvetica Neue", -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.inventory-container {
+  padding: 22vh 4vw 15vh 4vw; /* Added 15vh here to replace the removed padding */
+  max-width: 100%;
+  flex: 1; /* This pushes the footer to the bottom */
+}
