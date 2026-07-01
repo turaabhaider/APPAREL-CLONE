@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 
-export default function Navbar() {
+export default function Navbar({ isInventoryPage = false }) {
   const [isLight, setIsLight] = useState(false);
 
   useEffect(() => {
+    // If we are on the inventory page, we force the light theme and skip scroll logic
+    if (isInventoryPage) return;
+
     let frame = null;
 
-    // Flips the nav from light-text-on-dark-hero to dark-text-on-cream
-    // once the hero has scrolled mostly out of view (matches the two
-    // looks in the reference screenshots). If your hero section isn't
-    // roughly one viewport tall, adjust the 0.85 multiplier below, or
-    // swap this for an IntersectionObserver watching the hero element
-    // directly for a more robust trigger.
     const updateTheme = () => {
       frame = null;
+      // Triggers theme change after scrolling past 85% of the viewport height
       const threshold = window.innerHeight * 0.85;
       setIsLight(window.scrollY > threshold);
     };
@@ -23,7 +22,9 @@ export default function Navbar() {
       if (frame === null) frame = requestAnimationFrame(updateTheme);
     };
 
+    // Initial check
     updateTheme();
+    
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
 
@@ -32,34 +33,45 @@ export default function Navbar() {
       window.removeEventListener('resize', onScroll);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [isInventoryPage]);
+
+  // Combine classes based on scroll state or if it is the inventory page
+  const navClasses = `nav-header ${isLight ? 'theme-light' : ''} ${isInventoryPage ? 'inventory-nav' : ''}`;
 
   return (
-    <header className={`nav-header${isLight ? ' theme-light' : ''}`}>
+    <header className={navClasses}>
       {/* Left: Wordmark Logo */}
-      <a href="/" className="nav-logo" aria-label="PakTex Apparel — Home">
+      <Link to="/" className="nav-logo" aria-label="PakTex Apparel — Home">
         <span className="logo-line">PakTex</span>
         <span className="logo-line">
           Apparel<sup className="logo-reg">®</sup>
         </span>
         <span className="logo-tagline">The New Standard</span>
-      </a>
+      </Link>
 
       {/* Center: Nav Links */}
       <nav className="nav-center">
         <ul className="nav-links">
-          <li><a href="#capabilities">Capabilities</a></li>
-          <li><a href="#scale">Scale</a></li>
-          <li><a href="#standard">Standard</a></li>
+          {/* We use href="/#..." so they work from both Home and Inventory pages */}
+          <li><a href="/#capabilities">Capabilities</a></li>
+          <li><a href="/#scale">Scale</a></li>
+          <li><a href="/#standard">Standard</a></li>
         </ul>
       </nav>
 
       {/* Right: CTA Button */}
       <div className="nav-right">
-        <button className="nav-cta">
-          <span className="cta-text">INVENTORY</span>
-          <span className="cta-arrow">→</span>
-        </button>
+        {isInventoryPage ? (
+          <Link to="/" className="nav-cta">
+            <span className="cta-arrow" style={{ transform: 'none', marginRight: '6px' }}>←</span>
+            <span className="cta-text">HOME</span>
+          </Link>
+        ) : (
+          <Link to="/inventory" className="nav-cta">
+            <span className="cta-text">INVENTORY</span>
+            <span className="cta-arrow">→</span>
+          </Link>
+        )}
       </div>
     </header>
   );
