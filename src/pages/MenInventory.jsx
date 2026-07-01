@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import InventoryFooter from './InventoryFooter';
 import '../styles/InventoryCategory.css';
@@ -14,9 +15,9 @@ export default function MenInventory() {
       <Navbar isInventoryPage={true} />
       
       <main className="category-container">
-        <a href="/inventory" className="back-to-inventory-link">
+        <Link to="/inventory" className="back-to-inventory-link">
           &larr; RETURN TO INVENTORY
-        </a>
+        </Link>
 
         <header className="cat-header">
           <h1 className="cat-title">Men<span className="brand-dot">.</span></h1>
@@ -27,7 +28,7 @@ export default function MenInventory() {
         </header>
 
         <div className="product-grid">
-          <a href="#product" className="product-card">
+          <Link to="/inventory/men/pt-18500" className="product-card">
             <div className="product-image-box">
               <span className="gsm-badge">280 GSM</span>
               <img src={p18500} alt="Premium Blended Fleece Pullover" className="product-img" />
@@ -35,9 +36,9 @@ export default function MenInventory() {
             <div className="product-sku">PT-18500</div>
             <h3 className="product-title">Premium Blended Fleece Pullover</h3>
             <span className="view-link">VIEW PRODUCT &rarr;</span>
-          </a>
+          </Link>
 
-          <a href="#product" className="product-card">
+          <Link to="/inventory/men/pt-4000" className="product-card">
             <div className="product-image-box">
               <span className="gsm-badge">340 GSM</span>
               <img src={p4000} alt="Premium Black Fleece Pullover" className="product-img" />
@@ -45,9 +46,9 @@ export default function MenInventory() {
             <div className="product-sku">PT-4000</div>
             <h3 className="product-title">Premium Black Fleece Pullover</h3>
             <span className="view-link">VIEW PRODUCT &rarr;</span>
-          </a>
+          </Link>
 
-          <a href="#product" className="product-card">
+          <Link to="/inventory/men/pt-5000-mw" className="product-card">
             <div className="product-image-box">
               <span className="gsm-badge">180 GSM</span>
               <img src={mineralTee} alt="Mineral Wash Tee" className="product-img" />
@@ -55,7 +56,7 @@ export default function MenInventory() {
             <div className="product-sku">PT-5000-MW</div>
             <h3 className="product-title">Mineral Wash Tee</h3>
             <span className="view-link">VIEW PRODUCT &rarr;</span>
-          </a>
+          </Link>
         </div>
       </main>
       <InventoryFooter />

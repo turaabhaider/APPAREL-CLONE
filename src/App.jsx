@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Inventory from './pages/Inventory';
 import MenInventory from './pages/MenInventory';
 import WomenInventory from './pages/WomenInventory';
+import ProductDetail from './pages/ProductDetail';
 
 // Import styles
 import './styles/globals.css';
@@ -82,6 +83,7 @@ export default function App() {
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/inventory/men" element={<MenInventory />} />
         <Route path="/inventory/women" element={<WomenInventory />} />
+        <Route path="/inventory/:category/:slug" element={<ProductDetail />} />
       </Routes>
     </Router>
   );
