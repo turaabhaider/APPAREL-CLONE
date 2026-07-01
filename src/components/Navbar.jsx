@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 export default function Navbar({ isInventoryPage = false }) {
   const [isLight, setIsLight] = useState(false);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
-    // If we are on the inventory page, we force the light theme and skip scroll logic
     if (isInventoryPage) return;
 
     let frame = null;
 
     const updateTheme = () => {
       frame = null;
-      // Triggers theme change after scrolling past 85% of the viewport height
       const threshold = window.innerHeight * 0.85;
       setIsLight(window.scrollY > threshold);
     };
@@ -22,9 +23,8 @@ export default function Navbar({ isInventoryPage = false }) {
       if (frame === null) frame = requestAnimationFrame(updateTheme);
     };
 
-    // Initial check
     updateTheme();
-    
+
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
 
@@ -35,12 +35,38 @@ export default function Navbar({ isInventoryPage = false }) {
     };
   }, [isInventoryPage]);
 
-  // Combine classes based on scroll state or if it is the inventory page
-  const navClasses = `nav-header ${isLight ? 'theme-light' : ''} ${isInventoryPage ? 'inventory-nav' : ''}`;
+  // Smooth section navigation
+  const goToSection = (id) => {
+    // If we're not on home, navigate there first
+    if (location.pathname !== '/') {
+      navigate(`/#${id}`);
+      return;
+    }
+
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    // Lenis support
+    if (window.lenis) {
+      window.lenis.scrollTo(element, {
+        duration: 1.4,
+      });
+    } else {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
+  const navClasses = `nav-header ${isLight ? 'theme-light' : ''} ${
+    isInventoryPage ? 'inventory-nav' : ''
+  }`;
 
   return (
     <header className={navClasses}>
-      {/* Left: Wordmark Logo */}
+      {/* Logo */}
       <Link to="/" className="nav-logo" aria-label="PakTex Apparel — Home">
         <span className="logo-line">PakTex</span>
         <span className="logo-line">
@@ -49,21 +75,51 @@ export default function Navbar({ isInventoryPage = false }) {
         <span className="logo-tagline">The New Standard</span>
       </Link>
 
-      {/* Center: Nav Links */}
+      {/* Navigation */}
       <nav className="nav-center">
         <ul className="nav-links">
-          {/* We use href="/#..." so they work from both Home and Inventory pages */}
-          <li><a href="/#capabilities">Capabilities</a></li>
-          <li><a href="/#scale">Scale</a></li>
-          <li><a href="/#standard">Standard</a></li>
+          <li>
+            <button
+              type="button"
+              className="nav-link-btn"
+              onClick={() => goToSection('capabilities')}
+            >
+              Capabilities
+            </button>
+          </li>
+
+          <li>
+            <button
+              type="button"
+              className="nav-link-btn"
+              onClick={() => goToSection('scale')}
+            >
+              Scale
+            </button>
+          </li>
+
+          <li>
+            <button
+              type="button"
+              className="nav-link-btn"
+              onClick={() => goToSection('standard')}
+            >
+              Standard
+            </button>
+          </li>
         </ul>
       </nav>
 
-      {/* Right: CTA Button */}
+      {/* Right CTA */}
       <div className="nav-right">
         {isInventoryPage ? (
           <Link to="/" className="nav-cta">
-            <span className="cta-arrow" style={{ transform: 'none', marginRight: '6px' }}>←</span>
+            <span
+              className="cta-arrow"
+              style={{ transform: 'none', marginRight: '6px' }}
+            >
+              ←
+            </span>
             <span className="cta-text">HOME</span>
           </Link>
         ) : (

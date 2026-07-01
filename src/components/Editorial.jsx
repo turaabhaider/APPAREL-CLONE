@@ -96,7 +96,7 @@ export default function Editorial() {
           Scroll-linked headline: words darken from dim to ink
           as they cross the trigger line on scroll.
           =================================================== */}
-      <section className="editorial container" ref={sectionRef}>
+      <section id="standard" className="editorial container" ref={sectionRef}>
         <div className="editorial-label-col">
           <div className="label-tiny reveal-up">01 · STANDARD</div>
         </div>

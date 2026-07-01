@@ -65,7 +65,7 @@ export default function Showcase() {
   }, []);
 
   return (
-    <section className="showcase-wrapper">
+   <section id="capabilities" className="showcase-wrapper">
       <div className="showcase-header">
         <div className="label-tiny reveal-up showcase-eyebrow">04 · FLOOR</div>
         <h2 className="heading-large reveal-up">

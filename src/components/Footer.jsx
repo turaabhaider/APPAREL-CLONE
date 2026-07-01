@@ -78,7 +78,7 @@ export default function Footer() {
       </div>
 
       {/* Stats Grid Section */}
-      <div className="stats-grid">
+      <div id="scale" className="stats-grid">
         <div className="stat-col reveal-up">
           <div
             className="stat-number"
