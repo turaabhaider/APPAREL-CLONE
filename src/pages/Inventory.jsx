@@ -1,5 +1,7 @@
 import React from 'react';
-import Navbar from '../components/Navbar'; /* Adjust path if needed */
+import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import '../styles/Inventory.css';
 import menImg from '../assets/men.png';
 import womenImg from '../assets/women.png';
@@ -9,8 +11,7 @@ export default function Inventory() {
     <div className="inventory-page">
       <Navbar isInventoryPage={true} />
       
-      <main className="inventory-container">
-        {/* Header Section */}
+      <main className="inventory-container" style={{ paddingBottom: '15vh' }}>
         <section className="inv-header">
           <div className="inv-title-area">
             <span className="inv-eyebrow">INVENTORY</span>
@@ -25,10 +26,9 @@ export default function Inventory() {
           </div>
         </section>
 
-        {/* Grid Section */}
         <section className="inv-grid">
-          {/* Men's Card */}
-          <a href="#men" className="inv-card">
+          {/* Changed <a> to <Link> */}
+          <Link to="/inventory/men" className="inv-card">
             <div className="inv-card-image-box">
               <span className="inv-card-count">3 STYLES</span>
               <img src={menImg} alt="Men's Apparel" className="inv-card-img" />
@@ -37,10 +37,10 @@ export default function Inventory() {
               <h2 className="inv-card-title">Men</h2>
               <span className="inv-card-link">VIEW &rarr;</span>
             </div>
-          </a>
+          </Link>
 
-          {/* Women's Card */}
-          <a href="#women" className="inv-card">
+          {/* Changed <a> to <Link> */}
+          <Link to="/inventory/women" className="inv-card">
             <div className="inv-card-image-box">
               <span className="inv-card-count">4 STYLES</span>
               <img src={womenImg} alt="Women's Apparel" className="inv-card-img" />
@@ -49,9 +49,11 @@ export default function Inventory() {
               <h2 className="inv-card-title">Women</h2>
               <span className="inv-card-link">VIEW &rarr;</span>
             </div>
-          </a>
+          </Link>
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 }
