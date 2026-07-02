@@ -179,12 +179,12 @@ export default function Footer() {
             <p>California, United States</p>
           </div>
 
-          <div className="footer-col">
-            <p className="col-heading label-tiny">FOLLOW</p>
-            <p>LinkedIn</p>
-            <p>Facebook</p>
-            <p>Instagram</p>
-          </div>
+         <div className="footer-col">
+  <p className="col-heading label-tiny">FOLLOW</p>
+  <p><a href="https://www.linkedin.com/company/paktex-apparel/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  <p><a href="https://www.facebook.com/PakistanTextileExchange" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+  <p><a href="https://www.instagram.com/theptxofficial/?hl=en" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+</div>
         </div>
       </div>
 
