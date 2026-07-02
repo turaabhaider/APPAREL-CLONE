@@ -35,7 +35,15 @@ export default function ProductDetail() {
     );
   }
 
-  const maxUnits = Math.max(...product.sizes.map((s) => s.units || 0));
+  // Inventory data also needs to follow the active color — each color can
+  // carry its own sizes/totalUnits/inventoryLabel (see productsData.js). If a
+  // color doesn't define its own inventory, fall back to the product's
+  // top-level defaults so single-color products keep working unchanged.
+  const activeSizes = activeColor?.sizes || product.sizes;
+  const activeTotalUnits = activeColor?.totalUnits ?? product.totalUnits;
+  const activeInventoryLabel = activeColor?.inventoryLabel || product.inventoryLabel;
+
+  const maxUnits = Math.max(...activeSizes.map((s) => s.units || 0));
 
   return (
     <div className="category-page">
@@ -119,18 +127,18 @@ export default function ProductDetail() {
           <div className="pd-inventory-header">
             <div>
               <span className="pd-inventory-eyebrow">INVENTORY</span>
-              <h2 className="pd-inventory-title">{product.inventoryLabel}</h2>
+              <h2 className="pd-inventory-title">{activeInventoryLabel}</h2>
             </div>
             <div className="pd-inventory-total-label">
               <span>TOTAL UNITS</span>
               <span className="pd-inventory-total-value">
-                {product.totalUnits.toLocaleString()}
+                {activeTotalUnits.toLocaleString()}
               </span>
             </div>
           </div>
 
           <div className="pd-size-grid">
-            {product.sizes.map((s) => (
+            {activeSizes.map((s) => (
               <div className="pd-size-box" key={s.size}>
                 <div className="pd-size-row">
                   <span className="pd-size-label">{s.size}</span>
@@ -151,7 +159,7 @@ export default function ProductDetail() {
 
           <div className="pd-total-bar">
             <span>TOTAL AVAILABLE</span>
-            <span>{product.totalUnits.toLocaleString()}</span>
+            <span>{activeTotalUnits.toLocaleString()}</span>
           </div>
         </div>
 
