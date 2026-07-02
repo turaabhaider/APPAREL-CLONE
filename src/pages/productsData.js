@@ -1,8 +1,3 @@
-// src/pages/productsData.js
-// Central product data used by ProductDetail.jsx.
-// Numbers below were transcribed from your live product pages — please
-// double-check the inventory counts and packing text against your real
-// source of truth before relying on this in production.
 
 import p18500 from '../assets/Premium Blended Fleece Pullover.png';
 import p4000 from '../assets/Premium Black Fleece Pullover.png';
