@@ -34,10 +34,10 @@ export default function InventoryFooter() {
           <div className="inv-footer-column">
             <span className="inv-footer-eyebrow">FOLLOW</span>
             <div className="inv-footer-links">
-              <a href="#linkedin">LinkedIn</a>
-              <a href="#facebook">Facebook</a>
-              <a href="#instagram">Instagram</a>
-            </div>
+  <a href="https://www.linkedin.com/company/paktex-apparel/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  <a href="https://www.facebook.com/PakistanTextileExchange" target="_blank" rel="noopener noreferrer">Facebook</a>
+  <a href="https://www.instagram.com/theptxofficial/?hl=en" target="_blank" rel="noopener noreferrer">Instagram</a>
+</div>
           </div>
         </div>
       </div>
