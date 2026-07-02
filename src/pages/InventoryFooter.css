@@ -89,3 +89,24 @@
   font-family: "Helvetica Neue", -apple-system, sans-serif;
   margin-top: 10vh;
 }
+.inv-footer-links a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.inv-footer-links a:visited {
+  color: inherit;
+}
+
+.inv-footer-links a:hover,
+.inv-footer-links a:focus-visible {
+  color: #ff5a36; /* swap for your real accent var if you have one */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.inv-footer-links a:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
