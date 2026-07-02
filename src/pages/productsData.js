@@ -1,4 +1,3 @@
-
 import p18500 from '../assets/Premium Blended Fleece Pullover.png';
 import p4000 from '../assets/Premium Black Fleece Pullover.png';
 import mineralTee from '../assets/Mineral Wash Tee.png';
@@ -78,9 +77,38 @@ const products = [
     weight: '5.3 oz',
     packing: null,
     fabric: '100% cotton, garment-dyed mineral wash. Lived-in texture from the first wear.',
+    // Each color now carries its own inventory. Top-level sizes/totalUnits/
+    // inventoryLabel below still mirror the default ("selected") color, so any
+    // older code reading product.sizes directly keeps working.
     colors: [
-      { name: 'Black', selected: true, image: mineralTee },
-      { name: 'Gray', selected: false, image: mineralTeeGray },
+      {
+        name: 'Black',
+        selected: true,
+        image: mineralTee,
+        inventoryLabel: 'Black — in stock',
+        sizes: [
+          { size: 'S', units: 13860 },
+          { size: 'M', units: 21180 },
+          { size: 'L', units: 21060 },
+          { size: 'XL', units: 11520 },
+          { size: 'XXL', units: 3900 },
+        ],
+        totalUnits: 71520,
+      },
+      {
+        name: 'Gray',
+        selected: false,
+        image: mineralTeeGray,
+        inventoryLabel: 'Grey — in stock',
+        sizes: [
+          { size: 'S', units: 1920 },
+          { size: 'M', units: 4980 },
+          { size: 'L', units: 4740 },
+          { size: 'XL', units: 2340 },
+          { size: 'XXL', units: null },
+        ],
+        totalUnits: 13980,
+      },
     ],
     inventoryLabel: 'Black — in stock',
     sizes: [
@@ -107,8 +135,34 @@ const products = [
     packing: null,
     fabric: '50% cotton / 50% polyester, 1x1 baby rib. Soft hand with structured stretch.',
     colors: [
-      { name: 'Natural', selected: true, image: babyTee },
-      { name: 'White', selected: false, image: babyTeeWhite },
+      {
+        name: 'Natural',
+        selected: true,
+        image: babyTee,
+        inventoryLabel: 'Natural — in stock',
+        sizes: [
+          { size: 'S', units: 398 },
+          { size: 'M', units: 798 },
+          { size: 'L', units: 800 },
+          { size: 'XL', units: 400 },
+          { size: 'XXL', units: 400 },
+        ],
+        totalUnits: 2796,
+      },
+      {
+        name: 'White',
+        selected: false,
+        image: babyTeeWhite,
+        inventoryLabel: 'White — in stock',
+        sizes: [
+          { size: 'S', units: 398 },
+          { size: 'M', units: 798 },
+          { size: 'L', units: 800 },
+          { size: 'XL', units: 400 },
+          { size: 'XXL', units: 400 },
+        ],
+        totalUnits: 2796,
+      },
     ],
     inventoryLabel: 'Natural — in stock',
     sizes: [
@@ -160,8 +214,34 @@ const products = [
     packing: null,
     fabric: '100% cotton jersey. Lightweight, boxy cropped silhouette with a clean shoulder line.',
     colors: [
-      { name: 'Natural', selected: true, image: cropTee },
-      { name: 'White', selected: false, image: cropTeeWhite },
+      {
+        name: 'Natural',
+        selected: true,
+        image: cropTee,
+        inventoryLabel: 'Natural — in stock',
+        sizes: [
+          { size: 'S', units: 182 },
+          { size: 'M', units: 366 },
+          { size: 'L', units: 368 },
+          { size: 'XL', units: 184 },
+          { size: 'XXL', units: 400 },
+        ],
+        totalUnits: 1500,
+      },
+      {
+        name: 'White',
+        selected: false,
+        image: cropTeeWhite,
+        inventoryLabel: 'White — in stock',
+        sizes: [
+          { size: 'S', units: 398 },
+          { size: 'M', units: 777 },
+          { size: 'L', units: 800 },
+          { size: 'XL', units: 400 },
+          { size: 'XXL', units: 391 },
+        ],
+        totalUnits: 2766,
+      },
     ],
     inventoryLabel: 'Natural — in stock',
     sizes: [
@@ -188,8 +268,34 @@ const products = [
     packing: null,
     fabric: '100% cotton 1x1 rib. Heavier, structured rib knit with a defined boxy crop.',
     colors: [
-      { name: 'Natural', selected: true, image: ribBoxyCropTee },
-      { name: 'White', selected: false, image: ribBoxyCropTeeWhite },
+      {
+        name: 'Natural',
+        selected: true,
+        image: ribBoxyCropTee,
+        inventoryLabel: 'Natural — in stock',
+        sizes: [
+          { size: 'S', units: 398 },
+          { size: 'M', units: 798 },
+          { size: 'L', units: 800 },
+          { size: 'XL', units: 400 },
+          { size: 'XXL', units: 391 },
+        ],
+        totalUnits: 2787,
+      },
+      {
+        name: 'White',
+        selected: false,
+        image: ribBoxyCropTeeWhite,
+        inventoryLabel: 'White — in stock',
+        sizes: [
+          { size: 'S', units: 398 },
+          { size: 'M', units: 798 },
+          { size: 'L', units: 800 },
+          { size: 'XL', units: 400 },
+          { size: 'XXL', units: 400 },
+        ],
+        totalUnits: 2796,
+      },
     ],
     inventoryLabel: 'Natural — in stock',
     sizes: [
