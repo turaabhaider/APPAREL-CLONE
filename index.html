@@ -8,19 +8,86 @@
     <link rel="shortcut icon" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
 
-    <!-- Theme -->
+    <!-- Viewport & theme -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#111111" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="color-scheme" content="dark light" />
 
-    <!-- Responsive -->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-
+    <!-- Primary SEO -->
     <title>PakTex Apparel — Apparel Manufacturer in Pakistan</title>
+    <meta
+      name="description"
+      content="PakTex Apparel is an apparel manufacturer based in Pakistan, producing knitwear and cut-and-sew garments for private-label, wholesale and export clients."
+    />
+    <meta
+      name="keywords"
+      content="apparel manufacturer Pakistan, garment manufacturer Pakistan, clothing manufacturer Pakistan, textile manufacturer Pakistan, private label apparel Pakistan, knitwear manufacturer Pakistan, cut and sew Pakistan, apparel exporter Pakistan"
+    />
+    <meta name="author" content="PakTex Apparel" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://ptx-apparel-clone-production.up.railway.app/" />
+    <!-- ^ swap this for your real domain once you have one -->
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PakTex Apparel" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="PakTex Apparel — Apparel Manufacturer in Pakistan" />
+    <meta
+      property="og:description"
+      content="Apparel manufacturer based in Pakistan, producing knitwear and cut-and-sew garments for private-label, wholesale and export clients."
+    />
+    <meta property="og:url" content="https://ptx-apparel-clone-production.up.railway.app/" />
+    <meta property="og:image" content="https://ptx-apparel-clone-production.up.railway.app/og-image.jpg" />
+    <!-- ^ add a real 1200x630 image at /og-image.jpg for link previews -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PakTex Apparel — Apparel Manufacturer in Pakistan" />
+    <meta
+      name="twitter:description"
+      content="Apparel manufacturer based in Pakistan, producing knitwear and cut-and-sew garments for private-label, wholesale and export clients."
+    />
+    <meta name="twitter:image" content="https://ptx-apparel-clone-production.up.railway.app/og-image.jpg" />
+
+    <!-- Structured data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "PakTex Apparel",
+      "url": "https://ptx-apparel-clone-production.up.railway.app/",
+      "logo": "https://ptx-apparel-clone-production.up.railway.app/favicon.png",
+      "description": "Apparel manufacturer based in Pakistan, producing knitwear and cut-and-sew garments for private-label, wholesale and export clients.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PK"
+      },
+      "sameAs": []
+    }
+    </script>
+    <!-- Fill in streetAddress / addressLocality / email / social links (sameAs) once you have them -->
+
+    <!-- Analytics: drop your own GA4 measurement ID in when you have one -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    -->
   </head>
 
   <body>
+    <noscript>
+      PakTex Apparel — apparel manufacturer based in Pakistan. Please enable
+      JavaScript to view this site.
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
