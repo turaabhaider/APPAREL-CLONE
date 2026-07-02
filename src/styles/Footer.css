@@ -312,3 +312,24 @@
 }
 
 }
+.footer-col a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.footer-col a:visited {
+  color: inherit;
+}
+
+.footer-col a:hover,
+.footer-col a:focus-visible {
+  color: #ff5a36; /* swap for your real accent var if you have one */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-col a:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
